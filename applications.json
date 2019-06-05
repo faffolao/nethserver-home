@@ -1,0 +1,109 @@
+[
+    {
+        "icon": "logo.png",
+        "icon_base64": "data:image/png;base64,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",
+        "bugs": {
+            "url": "https://github.com/NethServer/dev/issues"
+        },
+        "author": {
+            "email": "edoardo.spadoni@nethesis.it, giacomo.sanchietti@nethesis.it",
+            "url": "https://github.com/NethServer/nethserver-firewall-base",
+            "name": "Edoardo Spadoni, Giacomo Sanchietti"
+        },
+        "summary": "NethServer firewall implementation based on Shorewall",
+        "legacy": 0,
+        "url": "",
+        "id": "nethserver-firewall-base",
+        "name": "Firewall",
+        "release": {
+            "version": "1.0.0"
+        },
+        "license": "GPL-3.0",
+        "description": "NethServer firewall implementation based on Shorewall",
+        "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+        ],
+        "homepage": "https://github.com/NethServer/nethserver-firewall-base",
+        "provides": [
+            "nethserver-firewall-base"
+        ],
+        "editable": 1,
+        "shortcut": 1,
+        "pinned": 0
+    },
+    {
+        "icon": "logo.png",
+        "icon_base64": "data:image/png;base64,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",
+        "bugs": {
+            "url": "https://github.com/NethServer/dev/issues"
+        },
+        "author": {
+            "email": "edoardo.spadoni@nethesis.it, giacomo.sanchietti@nethesis.it",
+            "url": "https://github.com/NethServer/nethserver-firewall-base",
+            "name": "Edoardo Spadoni, Giacomo Sanchietti"
+        },
+        "summary": "NethServer firewall implementation based on Shorewall",
+        "legacy": 0,
+        "url": "",
+        "id": "nethserver-firewall-base",
+        "name": "Firewall",
+        "release": {
+            "version": "1.0.0"
+        },
+        "license": "GPL-3.0",
+        "description": "NethServer firewall implementation based on Shorewall",
+        "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+        ],
+        "homepage": "https://github.com/NethServer/nethserver-firewall-base",
+        "provides": [
+            "nethserver-firewall-base"
+        ],
+        "editable": 1,
+        "shortcut": 1,
+        "pinned": 1
+    },
+    {
+        "icon": "legacy.png",
+        "name": "Subscription",
+        "release": {
+            "version": "legacy"
+        },
+        "description": "-",
+        "legacy": 1,
+        "editable": 0,
+        "url": "Subscription",
+        "id": "nethserver-subscription",
+        "shortcut": 0
+    },
+    {
+        "icon": "legacy.png",
+        "name": "Firewall base ui",
+        "release": {
+            "version": "legacy"
+        },
+        "description": "-",
+        "legacy": 1,
+        "editable": 0,
+        "url": "FirewallRules",
+        "id": "nethserver-firewall-base-ui",
+        "shortcut": 0
+    },
+    {
+        "icon": "legacy.png",
+        "name": "Diagtools",
+        "release": {
+            "version": "legacy"
+        },
+        "description": "-",
+        "legacy": 1,
+        "editable": 0,
+        "url": "DiagTools",
+        "id": "nethserver-diagtools",
+        "shortcut": 0
+    }
+]
