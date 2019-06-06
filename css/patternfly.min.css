@@ -2936,7 +2936,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .treeview .node-hidden{display:none}
 .treeview-pf-hover .list-group-item:hover{background-color:#def3ff!important;border-color:#bee1f4!important}
 .treeview-pf-select .list-group-item.node-selected{background:#0088ce!important;border-color:#0088ce!important;color:#fff!important}
-.card-pf{background:#fff;border-top:2px solid transparent;box-shadow:0 1px 1px rgba(3,3,3,.175);margin:0 -10px 20px;padding:0 20px}
+.card-pf{background:#fff;border-top:2px solid transparent;box-shadow:0 1px 1px rgba(3,3,3,.175);margin-left:auto;margin-right:auto;padding:0 20px}
 .card-pf.card-pf-accented{border-top-color:#39a5dc}
 .card-pf.card-pf-aggregate-status .card-pf-aggregate-status-notifications a,.card-pf.card-pf-aggregate-status .card-pf-title a{color:#363636}
 .card-pf.card-pf-aggregate-status .card-pf-aggregate-status-notifications a.add,.card-pf.card-pf-aggregate-status .card-pf-title a.add{color:#0088ce}
