@@ -19,7 +19,7 @@
             "version": "1.5.2"
         },
         "license": "GPL-3.0",
-        "description": "NethServer firewall implementation based on Shorewall",
+        "description": "NethServer mail server",
         "tags": [
             "tag1",
             "tag2",
