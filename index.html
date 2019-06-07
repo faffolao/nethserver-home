@@ -85,28 +85,35 @@
             border: 0.4px solid grey;
         }
 
-        .cockpit-link{
-            background:#fff;
-            border-top:2px solid transparent;
-            box-shadow:0 1px 1px rgba(3,3,3,.175);
-            padding:32px;
+        .cockpit-link {
+            background: #fff;
+            border-top: 2px solid transparent;
+            box-shadow: 0 1px 1px rgba(3, 3, 3, .175);
+            padding: 32px;
         }
 
         .cockpit-link:hover {
             color: #006080;
             text-decoration: none;
             cursor: pointer;
-            box-shadow:0 1px 6px rgba(3,3,3,.35);
-        }
-
-        .card-pf {
-            height: 345px;
+            box-shadow: 0 1px 6px rgba(3, 3, 3, .35);
         }
 
         canvas {
             background: #3D4547;
-            width: 100%;
-            height: 240px;
+        }
+
+        .card-pf-info {
+            font-size: 15px;
+            color: #484848;
+        }
+
+        .card-pf-item {
+            margin-bottom: 15px;
+        }
+
+        .version-p {
+            font-size: 14px;
         }
     </style>
 
@@ -125,16 +132,16 @@
             <script src="js/three.js"></script>
             <script>
                 // verifying webgl compatibility
-                if(!WEBGL.isWebGLAvailable()){
+                if (!WEBGL.isWebGLAvailable()) {
                     $("#3dlogo").html('<img class="text-center" src="images/nethserver.png" alt="Nethserver">');
                     throw new Error("WebGL is required to display 3D logo. Using default PNG logo");
                 }
 
                 // renderer
                 var renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('3dlogo'), antialias: true });
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(window.innerWidth, 240);
                 renderer.setClearColor(0x3D4547);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth - 55, 240);
 
                 // camera
                 var camera = new THREE.PerspectiveCamera(35, window.innerWidth / 240, 0.1, 3000);
@@ -146,28 +153,28 @@
                 var light = new THREE.AmbientLight(0xffffff, 0.5);
                 scene.add(light);
 
-                var light1 = new THREE.PointLight(0xffffff, 0.5);
+                var light1 = new THREE.PointLight(0xffffff, 0.75);
                 scene.add(light1);
 
                 // texts
-                var textMesh, textMesh2;
+                var textMesh, textMesh2, group;
                 var loader = new THREE.FontLoader();
                 loader.load('font/allroundgothic.json', function (font) {
                     var txt = new THREE.TextGeometry('neth', {
                         font: font,
                         size: 1,
-                        height: 0.7,
+                        height: 0.25,
                     });
                     var txt2 = new THREE.TextGeometry('server', {
                         font: font,
                         size: 1,
-                        height: 0.7,
+                        height: 0.25,
                     });
 
                     txt.computeBoundingBox();
                     txt2.computeBoundingBox();
-                    txt = new THREE.BufferGeometry().fromGeometry( txt );
-                    txt2 = new THREE.BufferGeometry().fromGeometry( txt2 );
+                    txt = new THREE.BufferGeometry().fromGeometry(txt);
+                    txt2 = new THREE.BufferGeometry().fromGeometry(txt2);
 
                     var material = new THREE.MeshLambertMaterial({
                         color: 0xffffff
@@ -178,11 +185,15 @@
 
                     textMesh = new THREE.Mesh(txt, material);
                     textMesh2 = new THREE.Mesh(txt2, material2);
-                    textMesh.position.set(-2.9, -0.5, -10);
-                    textMesh2.position.set(0.35, -0.5, -10);
-                    
-                    scene.add(textMesh);
-                    scene.add(textMesh2);
+                    textMesh.position.set(-2.9, -0.5, 0);
+                    textMesh2.position.set(0.35, -0.5, 0);
+
+                    group = new THREE.Group();
+                    group.position.set(0, 0, -7.5);
+                    group.add(textMesh);
+                    group.add(textMesh2);
+
+                    scene.add(group);
                 });
 
                 // sphere and materials
@@ -193,8 +204,8 @@
                 });
 
                 var mesh = new THREE.Mesh(geometry, material);
-                mesh.position.set(-4.2, 0, -8);
-                mesh.rotation.y = 4.70;
+                mesh.position.set(-4.2, 0, -6);
+                //mesh.rotation.y = 4.70;
 
                 scene.add(mesh);
 
@@ -209,18 +220,14 @@
 
                 // rotating logo with mouse
                 function move(e) {
-                    if(e.pageX <= window.screen.width && e.pageY <= window.screen.height){
-                        textMesh.rotation.x = e.pageY / 75;
-                        textMesh.rotation.y = e.pageX / 150;
+                    // add offsets
+                    group.rotation.x = (e.pageY-window.innerHeight/2) / 75 * 0.025;
+                    group.rotation.y = (e.pageX-window.innerWidth/2) / 150 * 0.025;
 
-                        textMesh2.rotation.x = e.pageY / 75;
-                        textMesh2.rotation.y = e.pageX / 150;
-                        
-                        mesh.rotation.x = e.pageY / 75;
-                        mesh.rotation.y = e.pageX / 150;
+                    mesh.rotation.x = e.pageY / 75 * 0.025;
+                    mesh.rotation.y = e.pageX / 150 * 0.025;
 
-                        renderer.render(scene, camera);
-                    }
+                    renderer.render(scene, camera);
                 }
             </script>
             <!-- END 3d logo -->
@@ -239,9 +246,8 @@
         <!-- BEGIN application cards -->
         <h2 class="text-center">Home applications</h2><br>
         <div class="container container-cards-pf">
-            <div class="row row-cards-pf" id="apps">
+            <div class="row row-cards-pf justify-content-center" id="apps">
                 <div class="spinner spinner-lg"></div>
-                <p class="text-center">Loading...</p>
             </div>
         </div><br>
         <hr class="divide-row"><br>
@@ -255,7 +261,6 @@
                         enthusiasts, designed for small offices and medium enterprises.</p>
                     <p>Server Manager is a simple web interface to guide you through server configuration.</p>
                     <p>With NethServer you can:
-                        <p />
                         <ul>
                             <li>share your files</li>
                             <li>secure your network with the Firewall module</li>
